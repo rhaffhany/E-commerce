@@ -1,0 +1,26 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="handleLogin()" class="rounded shadow w-50 mx-auto bg-light-main p-3 mt-5">
+
+    
+    <div class="form-item mt-2 ">
+        <label for="email">email:</label>
+        <input class="form-control  d-inline  " formControlName="email" type="email" id="email">
+        <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.value.length > 0 )" class="alert alert-danger mt-2 ">
+            <p *ngIf="loginForm.get('email')?.getError('required')">Email is Required</p> 
+            <p *ngIf="loginForm.get('email')?.getError('email')">Invalid Format</p> 
+        </div>
+    </div>
+    <div class="form-item mt-2 ">
+        <label for="password">password:</label>
+        <input class="form-control  d-inline  " formControlName="password" type="password" id="password" >
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger mt-2 ">
+            <p *ngIf="loginForm.get('password')?.getError('required')">password is Required</p> 
+            <!-- <p *ngIf="loginForm.get('password')?.getError('pattern')">Must be at least 6 charcters</p>  -->
+        </div>
+    </div>
+   
+    <button [disabled]="loginForm.invalid" (click)="handleLogin()" type="submit" class="main-btn mt-3 d-block mx-auto w-25">Login<span *ngIf="isLoading"><i class="fas fa-spin fa-spinner ms-1"></i></span></button>
+
+    <p *ngIf="errorMsg" class="alert alert-danger mt-2">{{errorMsg}}</p>
+
+</form>

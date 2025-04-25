@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+$mainColor: #0aad0a;
+$hoverColor:rgba(10, 173, 10, 0.879);
+$lightColor: #f0f3f2;
+$shadow: rgba(145,158,171,0.2) 0px 2px 4px -1px,
+         rgba(145,158,171,0.14) 0px 4px 5px 0px,
+         rgba(145,158,171,0.12) 0px 1px 10px 0px;
+$ratingColor: #ffc908;
+$main-transition: 0.8s;
+
+body{
+    $font-family: "Encode Sans Expanded" , "sans-serif";
+}
+.rating-color{
+    color: $ratingColor ;
+}
+.text-main{
+    color: $mainColor;
+}
+.bg-light-main{
+    background-color: $lightColor;
+}
+.font-sm{
+    font-size: 12px;
+}
+
+.main-btn{
+    background-color: $mainColor;
+    color: #fff;
+    cursor: pointer;
+    border: unset;
+    padding: 4px 8px;
+    border-radius: 5px;
+
+    &:disabled{
+        backface-visibility: #0347036d;
+        color: #ffffff6b;
+        cursor: not-allowed;
+    }
+
+    &:hover{
+        background-color: $hoverColor;
+    }
+
+}
+
+.active-link{
+    background-color: $mainColor;
+    color: #fff;
+    border-radius: 5px;
+}
+a.nav-link.active-link {
+    background-color: $mainColor;
+    color: #fff !important;
+    border-radius: 5px;
+  }
+  
+
+

@@ -1,0 +1,68 @@
+<main>
+
+    <header>
+        <div class="row g-0">
+            <div class="col-md-8">
+                <owl-carousel-o [options]="headSlider">
+                    <ng-template carouselSlide><img height="400px" src="../../../assets/images/main-slider-1.jpeg" alt=""></ng-template>  
+                    <ng-template carouselSlide><img height="400px" src="../../../assets/images/main-slider-2.jpeg" alt=""></ng-template>  
+                    <ng-template carouselSlide><img height="400px" src="../../../assets/images/main-slider-3.jpeg" alt=""></ng-template>  
+                </owl-carousel-o>
+            </div>
+
+            <div class="col-md-4">
+                <img class="w-100" height="200px" src="../../../assets/images/slide-1.jpeg" alt="">
+                <img class="w-100" height="200px" src="../../../assets/images/slide-2.jpeg" alt="">
+
+            </div>
+
+        </div>
+    </header>
+    
+    <section>
+        <h2>Shop Categories</h2>
+    
+        <owl-carousel-o [options]="catSlider">
+            <ng-container *ngFor="let item of CategoriesData">
+              <ng-template carouselSlide >
+                <img class="object-fit-cover" height="500px" [src]="item.image" [alt]="item.name" [title]="item.slug">
+                <h3 class="h6 text-main">{{item.name}}</h3>
+              </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    
+    </section>
+    
+    <section>
+        <div class="row g-4">
+            <div *ngFor="let product of productsData" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    
+                <div class="card p-2">
+                    <div role="button" [routerLink]="['/details',product._id]">
+                        <img [src]="product.imageCover" alt="product-img" class="w-100">
+                    
+                        <div class="product-details">
+                            <h3 class="text-main h6">{{product.category.name}}</h3>
+                            <h4 class="h6">{{product.title.split(" ",4).join(' ')}}</h4>
+        
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>{{product.price | currency:'EGP'}}</span>
+                                <span>
+                                    {{product.ratingsAverage}}
+                                    <i class="rating-color fas fa-star"></i> 
+                                </span>
+                            </div>
+        
+                        </div>
+                    </div>
+    
+                    <div>
+                        <button class="main-btn mt-2 w-100" (click)="addProduct(product._id)">+ Add To Cart</button>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+</main>
