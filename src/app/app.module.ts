@@ -21,11 +21,12 @@ import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsProductComponent } from './Components/details-product/details-product.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { AllordersComponent } from './Components/allorders/allorders.component';
 import { MyhttpInterceptor } from './interceptors/myhttp.interceptor';
+import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MyhttpInterceptor } from './interceptors/myhttp.interceptor';
     BlankLayoutComponent,
     DetailsProductComponent,
     PaymentComponent,
-    AllordersComponent
+    AllordersComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { MyhttpInterceptor } from './interceptors/myhttp.interceptor';
     BrowserAnimationsModule,
     CarouselModule,
     HttpClientModule,
-    ToastrModule.forRoot({positionClass: 'toast-bottom-right'})
+    ToastrModule.forRoot({positionClass: 'toast-bottom-right'}),
+    FormsModule
   ],
   providers: [ 
     {provide: HTTP_INTERCEPTORS , useClass: MyhttpInterceptor, multi: true}

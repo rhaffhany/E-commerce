@@ -34,8 +34,9 @@
     </section>
     
     <section>
+        <input type="text" class="form-control w-50 mx-auto my-3" placeholder="Search For Products..." [(ngModel)]="term">
         <div class="row g-4">
-            <div *ngFor="let product of productsData" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div *ngFor="let product of productsData | search: term " class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
     
                 <div class="card p-2">
                     <div role="button" [routerLink]="['/details',product._id]">

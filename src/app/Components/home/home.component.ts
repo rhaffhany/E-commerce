@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit{
   productsData:any[] = [];
   CategoriesData:Category[] = [];
 
+  term:string = '';
+
   ngOnInit(): void {
     this._ApidataService.getProducts().subscribe({
       next:(response)=>{
