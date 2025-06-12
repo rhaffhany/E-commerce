@@ -16,9 +16,10 @@ export class RegisterComponent {
     name:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)] ],
     email:['', [Validators.required, Validators.email] ],
     password:['', [Validators.required, Validators.pattern(/^\w{6,}$/)] ],
-    rePassword:['', [Validators.required, Validators.pattern(/^\w{6,}$/)] ],
+    rePassword:[''],
     phone:['', [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)] ],
-  });
+  }, 
+  { validators: [this.confirmPasswordValidator] });
 
   // registerForm:FormGroup = new FormGroup( {
   //   name:new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -30,6 +31,21 @@ export class RegisterComponent {
 
   isLoading:boolean =  false;
   errorMsg:string = '';
+
+  //group == el registerForm
+  confirmPasswordValidator(group:FormGroup):void{
+    const password = group.get('password')?.value;
+    const rePassword = group.get('rePassword')?.value;
+
+    if(rePassword === '' ){
+      rePassword.setErrors({required:true});
+    }
+    else if(password !== rePassword){
+      rePassword.setErrors({notMatch:true});
+    }else {
+      rePassword.setErrors(null);
+    } 
+  }
 
   // 34an lw user shal el disabled ely 3la button
   handleRegister():void{

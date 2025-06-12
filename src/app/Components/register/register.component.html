@@ -25,7 +25,7 @@
         <input class="form-control  d-inline  " formControlName="password" type="password" id="password" >
         <div *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.value.length > 0 )" class="alert alert-danger mt-2 ">
             <p *ngIf="registerForm.get('password')?.getError('required')">password is Required</p> 
-            <p *ngIf="registerForm.get('password')?.getError('pattern')">Must be at least 6 charcters</p> 
+            <p *ngIf="registerForm.get('password')?.getError('notMatch')">Password confirmation is incorrect</p> 
         </div>
     </div>
     <div class="form-item mt-2 ">
